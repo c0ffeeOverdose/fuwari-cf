@@ -47,7 +47,21 @@ A static blog template built with [Astro](https://astro.build).
     - Install [pnpm](https://pnpm.io) `npm install -g pnpm` if you haven't.
 3. Edit the config file `src/config.ts` to customize your blog.
 4. Run `pnpm new-post <filename>` to create a new post and edit it in `src/content/posts/`.
-5. Deploy your blog to Vercel, Netlify, GitHub Pages, etc. following [the guides](https://docs.astro.build/en/guides/deploy/). You need to edit the site configuration in `astro.config.mjs` before deployment.
+5. Deploy your blog to Vercel, Netlify, Cloudflare, GitHub Pages, etc. following [the guides](https://docs.astro.build/en/guides/deploy/). You need to edit the site configuration in `astro.config.mjs` before deployment.
+
+## Cloudflare
+
+This repository can deploy to Cloudflare as a static site with minimal changes from upstream, which keeps future merges from `main` straightforward and preserves Cloudflare's edge caching performance.
+
+1. Update `site` in `astro.config.mjs` to your production URL.
+2. Update `name` in `wrangler.jsonc` to your Cloudflare project name.
+3. Build and preview locally with `pnpm cf:preview`.
+4. Deploy with `pnpm cf:deploy`.
+
+If you prefer Cloudflare's Git-based deployment flow, keep the project static and set:
+
+- Build command: `pnpm build`
+- Build output directory: `dist`
 
 ## 📝 Frontmatter of Posts
 
@@ -82,6 +96,8 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm dev`                 | Starts local dev server at `localhost:4321`         |
 | `pnpm build`               | Build your production site to `./dist/`             |
 | `pnpm preview`             | Preview your build locally, before deploying        |
+| `pnpm cf:preview`          | Build and preview the static site with Wrangler     |
+| `pnpm cf:deploy`           | Build and deploy the static site to Cloudflare      |
 | `pnpm check`               | Run checks for errors in your code                  |
 | `pnpm format`              | Format your code using Biome                        |
 | `pnpm new-post <filename>` | Create a new post                                   |

@@ -1,0 +1,10 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	// Change this to your own Cloudflare project name before the first deploy.
+	"name": "fuwari-template",
+	"compatibility_date": "2026-04-03",
+	"assets": {
+		"directory": "./dist",
+		"not_found_handling": "404-page"
+	}
+}
