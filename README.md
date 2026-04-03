@@ -58,6 +58,13 @@ This repository can deploy to Cloudflare as a static site with minimal changes f
 3. Build and preview locally with `pnpm cf:preview`.
 4. Deploy with `pnpm cf:deploy`.
 
+For GitHub Actions auto-deploy on `push` to `main`, add these repository secrets first:
+
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_ACCOUNT_ID`
+
+Then the included `Cloudflare Deploy` workflow will build and publish the site automatically after `Build and Check` succeeds.
+
 If you prefer Cloudflare's Git-based deployment flow, keep the project static and set:
 
 - Build command: `pnpm build`
